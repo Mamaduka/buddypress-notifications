@@ -1,6 +1,6 @@
 {
-	"name": "mamaduka/buddypress-switcher",
-	"description": "Switch themes based on Query string and cookie value.",
+	"name": "mamaduka/buddypress-notifications",
+	"description": "More extendable replacement of default BuddyPress notifications.",
 	"type": "wordpress-plugin",
 	"license": "MIT",
 	"authors": [
