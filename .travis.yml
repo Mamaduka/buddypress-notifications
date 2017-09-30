@@ -18,7 +18,7 @@ cache:
 matrix:
   include:
     - php: 5.6
-      env: 'COMPOSER_FLAGS="--no-progress --prefer-source"'
+      env: 'COMPOSER_FLAGS="--no-progress --prefer-dist"'
 
 before_script:
   - travis_retry composer install ${COMPOSER_FLAGS}
