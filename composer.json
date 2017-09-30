@@ -1,33 +1,35 @@
 {
-	"name": "mamaduka/buddypress-notifications",
-	"description": "More extendable replacement of default BuddyPress notifications.",
-	"type": "wordpress-plugin",
-	"license": "MIT",
-	"authors": [
-	  {
-		"name": "George Mamadashvili",
-		"email": "georgemamadashvili@gmail.com",
-		"homepage": "https://mamaduka.com",
-		"role": "Developer"
-	  }
-	],
-	"require": {
-	  "php": ">=5.6"
-	},
-	"require-dev": {
-	  "brain/monkey": "^1.4",
-	  "mockery/mockery": "~0.9",
-	  "phpunit/phpunit": "~4.8|~5.1"
-	},
-	"autoload": {
-	  "psr-4": {
-		"Mamaduka\\BpNotifications\\": "src"
-	  }
-	},
-	"autoload-dev": {
-	  "psr-4": {
-		"Mamaduka\\BpNotifications\\Tests\\": "tests"
-	  }
-	}
+  "name": "mamaduka/buddypress-notifications",
+  "description": "More extendable replacement of default BuddyPress notifications.",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+    "name": "George Mamadashvili",
+    "email": "georgemamadashvili@gmail.com",
+    "homepage": "https://mamaduka.com",
+    "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "brain/monkey": "^1.4",
+    "mockery/mockery": "~0.9",
+    "phpunit/phpunit": "~4.8|~5.1"
+  },
+  "autoload": {
+    "psr-4": {
+    "Mamaduka\\BpNotifications\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+    "Mamaduka\\BpNotifications\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
   }
-  
+}
