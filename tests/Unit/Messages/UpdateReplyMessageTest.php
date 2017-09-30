@@ -15,7 +15,7 @@ class UpdateReplyMessageTest extends TestCase {
 	 * @covers ::message
 	 */
 	public function test_message_single_mention() {
-		Functions::expect('bp_core_get_user_displayname')->with(1)->andReturn('Rick Sanchez');
+		Functions\expect('bp_core_get_user_displayname')->with(1)->andReturn('Rick Sanchez');
 
 		$data = $this->mockData();
 
@@ -42,11 +42,11 @@ class UpdateReplyMessageTest extends TestCase {
 			'total' => 1,
 		]);
 
-		Functions::expect('bp_activity_get_permalink')
+		Functions\expect('bp_activity_get_permalink')
 			->with($data['activity_id'])
 			->andReturn('https://example.com/activity/p/1/');
 
-		Functions::expect('add_query_arg')
+		Functions\expect('add_query_arg')
 			->with( 'nid', $data['id'], $url )
 			->andReturn( $url . '?nid=1' );
 
@@ -64,11 +64,11 @@ class UpdateReplyMessageTest extends TestCase {
 			'total' => 3,
 		]);
 
-		Functions::expect('bp_get_notifications_permalink')
+		Functions\expect('bp_get_notifications_permalink')
 			->with($data['user_id'])
 			->andReturn('https://example.com/members/rick/notifications/');
 
-		Functions::expect('add_query_arg')
+		Functions\expect('add_query_arg')
 			->with( 'type', $data['action'], $url )
 			->andReturn( $url . '?type=update_reply' );
 
@@ -87,15 +87,15 @@ class UpdateReplyMessageTest extends TestCase {
 			'total' => 1,
 		]);
 
-		Functions::expect('bp_core_get_user_displayname')
+		Functions\expect('bp_core_get_user_displayname')
 			->with($data['user_id'])
 			->andReturn('Rick Sanchez');
 
-		Functions::expect('bp_activity_get_permalink')
+		Functions\expect('bp_activity_get_permalink')
 			->with($data['activity_id'])
 			->andReturn($url);
 
-		Functions::expect('add_query_arg')
+		Functions\expect('add_query_arg')
 			->with('nid', $data['id'], $url)
 			->andReturn($url . '?nid=1');
 
@@ -117,20 +117,20 @@ class UpdateReplyMessageTest extends TestCase {
 			'total' => 1,
 		]);
 
-		Functions::expect('bp_core_get_user_displayname')
+		Functions\expect('bp_core_get_user_displayname')
 			->with($data['user_id'])
 			->andReturn('Rick Sanchez');
 
-		Functions::expect('bp_activity_get_permalink')
+		Functions\expect('bp_activity_get_permalink')
 			->with($data['activity_id'])
 			->andReturn($url);
 
-		Functions::expect('add_query_arg')
+		Functions\expect('add_query_arg')
 			->with('nid', $data['id'], $url)
 			->andReturn($url . '?nid=1');
 
-		Functions::when('esc_url')->justReturn($url . '?nid=1');
-		Functions::when('esc_html')->justReturn('Rick Sanchez commented on one of your updates');
+		Functions\when('esc_url')->justReturn($url . '?nid=1');
+		Functions\when('esc_html')->justReturn('Rick Sanchez commented on one of your updates');
 
 		$this->assertSame(
 			'<a href="https://example.com/activity/p/1/?nid=1">Rick Sanchez commented on one of your updates</a>',

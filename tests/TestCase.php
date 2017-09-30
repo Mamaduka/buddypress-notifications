@@ -22,7 +22,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase {
 	protected function setUp() {
 
 		parent::setUp();
-		Monkey::setUpWP();
+		Monkey\setUp();
 	}
 
 	/**
@@ -34,7 +34,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase {
 	 */
 	protected function tearDown() {
 
-		Monkey::tearDownWP();
+		Monkey\tearDown();
 		parent::tearDown();
 	}
 
