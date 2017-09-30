@@ -15,7 +15,9 @@ class UpdateReplyMessageTest extends TestCase {
 	 * @covers ::message
 	 */
 	public function test_message_single_mention() {
-		Functions\expect('bp_core_get_user_displayname')->with(1)->andReturn('Rick Sanchez');
+		Functions\expect('bp_core_get_user_displayname')
+			->with(1)
+			->andReturn('Rick Sanchez');
 
 		$data = $this->mockData();
 
@@ -129,8 +131,11 @@ class UpdateReplyMessageTest extends TestCase {
 			->with('nid', $data['id'], $url)
 			->andReturn($url . '?nid=1');
 
-		Functions\when('esc_url')->justReturn($url . '?nid=1');
-		Functions\when('esc_html')->justReturn('Rick Sanchez commented on one of your updates');
+		Functions\when('esc_url')
+			->returnArg();
+
+		Functions\when('esc_html')
+			->returnArg();
 
 		$this->assertSame(
 			'<a href="https://example.com/activity/p/1/?nid=1">Rick Sanchez commented on one of your updates</a>',

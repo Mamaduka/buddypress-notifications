@@ -15,7 +15,9 @@ class CommentReplyMessageTest extends TestCase {
 	 * @covers ::message
 	 */
 	public function test_message_single_mention() {
-		Functions\expect('bp_core_get_user_displayname')->with(1)->andReturn('Rick Sanchez');
+		Functions\expect('bp_core_get_user_displayname')
+			->with(1)
+			->andReturn('Rick Sanchez');
 
 		$data = $this->mockData();
 

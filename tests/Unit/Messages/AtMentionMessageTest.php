@@ -15,7 +15,9 @@ class AtMentionMessageTest extends TestCase {
 	 * @covers ::message
 	 */
 	public function test_message_single_mention() {
-		Functions\expect('bp_core_get_user_displayname')->with(1)->andReturn('Rick Sanchez');
+		Functions\expect('bp_core_get_user_displayname')
+			->with(1)
+			->andReturn('Rick Sanchez');
 
 		$data = $this->mockData();
 
@@ -35,8 +37,13 @@ class AtMentionMessageTest extends TestCase {
 	 * @covers ::url
 	 */
 	public function test_url() {
-		Functions\expect('bp_loggedin_user_domain')->withNoArgs()->andReturn('https://example.com/members/rick/');
-		Functions\expect('bp_get_activity_slug')->withNoArgs()->andReturn('activity');
+		Functions\expect('bp_loggedin_user_domain')
+			->withNoArgs()
+			->andReturn('https://example.com/members/rick/');
+
+		Functions\expect('bp_get_activity_slug')
+			->withNoArgs()
+			->andReturn('activity');
 
 		$this->assertSame( 'https://example.com/members/rick/activity/mentions/', ( new Testee() )->url() );
 	}
@@ -45,9 +52,17 @@ class AtMentionMessageTest extends TestCase {
 	 * @covers ::toArray
 	 */
 	public function test_toArray() {
-		Functions\when('bp_core_get_user_displayname')->justReturn('Rick Sanchez');
-		Functions\expect('bp_loggedin_user_domain')->withNoArgs()->andReturn('https://example.com/members/rick/');
-		Functions\expect('bp_get_activity_slug')->withNoArgs()->andReturn('activity');
+		Functions\expect('bp_core_get_user_displayname')
+			->with(1)
+			->andReturn('Rick Sanchez');
+
+		Functions\expect('bp_loggedin_user_domain')
+			->withNoArgs()
+			->andReturn('https://example.com/members/rick/');
+
+		Functions\expect('bp_get_activity_slug')
+			->withNoArgs()
+			->andReturn('activity');
 
 		$this->assertEquals([
 			'text' => 'Rick Sanchez mentioned you',
@@ -59,11 +74,23 @@ class AtMentionMessageTest extends TestCase {
 	 * @covers ::toHtml
 	 */
 	public function test_toHtml() {
-		Functions\when('bp_core_get_user_displayname')->justReturn('Rick Sanchez');
-		Functions\when('esc_url')->justReturn('https://example.com/members/rick/activity/mentions/');
-		Functions\when('esc_html')->justReturn('Rick Sanchez mentioned you');
-		Functions\expect('bp_loggedin_user_domain')->withNoArgs()->andReturn('https://example.com/members/rick/');
-		Functions\expect('bp_get_activity_slug')->withNoArgs()->andReturn('activity');
+		Functions\expect('bp_core_get_user_displayname')
+			->with(1)
+			->andReturn('Rick Sanchez');
+
+		Functions\expect('bp_loggedin_user_domain')
+			->withNoArgs()
+			->andReturn('https://example.com/members/rick/');
+
+		Functions\expect('bp_get_activity_slug')
+			->withNoArgs()
+			->andReturn('activity');
+
+		Functions\when('esc_url')
+			->returnArg();
+
+		Functions\when('esc_html')
+			->returnArg();
 
 		$this->assertSame(
 			'<a href="https://example.com/members/rick/activity/mentions/">Rick Sanchez mentioned you</a>',
