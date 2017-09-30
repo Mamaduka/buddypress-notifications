@@ -13,6 +13,7 @@ class AtMentionMessageTest extends TestCase {
 
 	/**
 	 * @covers ::message
+	 * @covers ::__construct
 	 */
 	public function test_message_single_mention() {
 		Functions\expect('bp_core_get_user_displayname')
