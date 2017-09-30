@@ -18,10 +18,10 @@ cache:
 matrix:
   include:
     - php: 5.6
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+      env: 'COMPOSER_FLAGS="--no-progress --prefer-source"'
 
 before_script:
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+  - travis_retry composer install ${COMPOSER_FLAGS}
 
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
